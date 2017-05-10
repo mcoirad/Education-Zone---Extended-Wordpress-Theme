@@ -61,7 +61,18 @@ function education_zone_header(){
 	
             <?php
             
-            if( is_archive() ) the_archive_title( '<h1 class="page-title">', '</h1>' ); 
+      if( is_archive() ) {
+       		$title = get_the_archive_title();
+        
+        if (substr($title, 0, 8) == "Category") {
+         	 $title = substr($title, 10, strlen($title));
+          	echo '<h1 class="page-title">' . $title . '</h1>';
+        } else {
+          the_archive_title( '<h1 class="page-title">', '</h1>' ); 
+        }
+        
+      }
+      
             
             if( is_search() ){ 
                 global $wp_query;    
@@ -74,7 +85,7 @@ function education_zone_header(){
                 <h1 class="page-title"><?php single_post_title(); ?></h1>
             <?php 
             }
-            
+      
             if( is_page() ){
                 the_title( '<h1 class="page-title">', '</h1>' );
             }
@@ -373,6 +384,10 @@ function education_zone_get_sections(){
 			  'testimonial-section' => array(
               'id' => 'testimonials',
               'class' => 'student-stories'
+              ),
+	  		'news-section' => array(
+              'id' => 'news',
+              'class' => 'news-section'
               ),
             'gallery-section'=> array(
               'id' => 'gallery',

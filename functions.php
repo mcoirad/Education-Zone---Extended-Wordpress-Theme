@@ -14,6 +14,17 @@ if ( !defined( 'EDUCATION_ZONE_THEME_VERSION' ) ) {
 	define ( 'EDUCATION_ZONE_THEME_VERSION', $theme_data->get( 'Version' ) );
 }
 
+function wpex_clean_shortcodes($content){   
+$array = array (
+    '<p>[' => '[', 
+    ']</p>' => ']', 
+    ']<br />' => ']'
+);
+$content = strtr($content, $array);
+return $content;
+}
+add_filter('the_content', 'wpex_clean_shortcodes');
+
 if ( ! function_exists( 'education_zone_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

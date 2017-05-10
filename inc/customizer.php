@@ -11,7 +11,7 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function education_zone_customize_register( $wp_customize ) {
-	
+
     /* Option list of all post */ 
     $options_posts = array();
     $options_posts_obj = get_posts('posts_per_page=-1');
@@ -664,6 +664,39 @@ function education_zone_customize_register( $wp_customize ) {
             'type' => 'select',
             'choices' => $options_posts
         ));
+		
+	/** Add Override Image for First Course **/
+	$wp_customize->add_setting( 'education_zone_featured_courses_image_one',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_image',
+        )
+    );
+	
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'education_zone_featured_courses_image_one', 
+		array(
+			'label'    => __( 'Override 1st Image (optional)', 'education-zone' ),
+			'section'  => 'education_zone_featured_courses_section_settings',
+			'settings' => 'education_zone_featured_courses_image_one',
+	) ) );
+  
+  	/** Add Override Text for First Course */
+    $wp_customize->add_setting(
+        'education_zone_featured_courses_text_one',
+        array(
+            'default'=> __( '', 'education-zone' ),
+            'sanitize_callback'=> 'sanitize_text_field'
+            )
+        );
+    
+    $wp_customize->add_control(
+        'education_zone_featured_courses_text_one',
+        array(
+              'label' => __( 'Override 1st Post Text (optional)', 'education-zone' ),
+              'section' => 'education_zone_featured_courses_section_settings', 
+              'type' => 'text',
+            ));
     
     /** Featured Course Post Second */
     $wp_customize->add_setting(
@@ -681,6 +714,39 @@ function education_zone_customize_register( $wp_customize ) {
             'type' => 'select',
             'choices' => $options_posts
         ));
+		
+	/** Add Override Image for Second Course **/
+	$wp_customize->add_setting( 'education_zone_featured_courses_image_two',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_image',
+        )
+    );
+	
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'education_zone_featured_courses_image_two', 
+		array(
+			'label'    => __( 'Override 2nd Image (optional)', 'education-zone' ),
+			'section'  => 'education_zone_featured_courses_section_settings',
+			'settings' => 'education_zone_featured_courses_image_two',
+	) ) );
+  
+    /** Add Override Text for Second Course */
+    $wp_customize->add_setting(
+        'education_zone_featured_courses_text_two',
+        array(
+            'default'=> __( '', 'education-zone' ),
+            'sanitize_callback'=> 'sanitize_text_field'
+            )
+        );
+    
+    $wp_customize->add_control(
+        'education_zone_featured_courses_text_two',
+        array(
+              'label' => __( 'Override 2nd Post Text (optional)', 'education-zone' ),
+              'section' => 'education_zone_featured_courses_section_settings', 
+              'type' => 'text',
+            ));
 
     /** Featured Course Post Third */
     $wp_customize->add_setting(
@@ -698,6 +764,39 @@ function education_zone_customize_register( $wp_customize ) {
             'type' => 'select',
             'choices' => $options_posts
         ));
+		
+	/** Add Override Image for Third Course **/
+	$wp_customize->add_setting( 'education_zone_featured_courses_image_three',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_image',
+        )
+    );
+	
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'education_zone_featured_courses_image_three', 
+		array(
+			'label'    => __( 'Override 3rd Image (optional)', 'education-zone' ),
+			'section'  => 'education_zone_featured_courses_section_settings',
+			'settings' => 'education_zone_featured_courses_image_three',
+	) ) );
+  
+    	/** Add Override Text for Third Course */
+    $wp_customize->add_setting(
+        'education_zone_featured_courses_text_three',
+        array(
+            'default'=> __( '', 'education-zone' ),
+            'sanitize_callback'=> 'sanitize_text_field'
+            )
+        );
+    
+    $wp_customize->add_control(
+        'education_zone_featured_courses_text_three',
+        array(
+              'label' => __( 'Override 3rd Post Text (optional)', 'education-zone' ),
+              'section' => 'education_zone_featured_courses_section_settings', 
+              'type' => 'text',
+            ));
 
     /** Featured Course Post Fourth */
     $wp_customize->add_setting(
@@ -715,6 +814,39 @@ function education_zone_customize_register( $wp_customize ) {
             'type' => 'select',
             'choices' => $options_posts
         ));
+		
+	/** Add Override Image for Fourth Course **/
+	$wp_customize->add_setting( 'education_zone_featured_courses_image_four',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_image',
+        )
+    );
+	
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'education_zone_featured_courses_image_four', 
+		array(
+			'label'    => __( 'Override 4th Image (optional)', 'education-zone' ),
+			'section'  => 'education_zone_featured_courses_section_settings',
+			'settings' => 'education_zone_featured_courses_image_four',
+	) ) );
+  
+    	/** Add Override Text for Fourth Course */
+    $wp_customize->add_setting(
+        'education_zone_featured_courses_text_four',
+        array(
+            'default'=> __( '', 'education-zone' ),
+            'sanitize_callback'=> 'sanitize_text_field'
+            )
+        );
+    
+    $wp_customize->add_control(
+        'education_zone_featured_courses_text_four',
+        array(
+              'label' => __( 'Override 4th Post Text (optional)', 'education-zone' ),
+              'section' => 'education_zone_featured_courses_section_settings', 
+              'type' => 'text',
+            ));
 
 
     /** Extra Info Section Settings */
@@ -932,6 +1064,22 @@ function education_zone_customize_register( $wp_customize ) {
             'type' => 'select',
             'choices' => $options_posts
         ));
+		
+	/** Add Override Image for Third Post **/
+	$wp_customize->add_setting( 'education_zone_why_choose_image_three',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_image',
+        )
+    );
+	
+	$wp_customize->add_control( 
+		new WP_Customize_Image_Control( $wp_customize, 'education_zone_why_choose_image_three', 
+		array(
+			'label'    => __( 'Override 3rd Image (optional)', 'education-zone' ),
+			'section'  => 'education_zone_choose_us_section_settings',
+			'settings' => 'education_zone_why_choose_image_three',
+	) ) );
 
     /** Choose Fourth Post */
     $wp_customize->add_setting(
@@ -1117,6 +1265,130 @@ function education_zone_customize_register( $wp_customize ) {
         )
     );
     /** Blog Section Ends */
+	
+	/** News Section Settings */
+    $wp_customize->add_section(
+        'education_zone_news_section_settings',
+        array(
+            'title' => __( 'News Section', 'education-zone' ),
+            'priority' => 71,
+            'capability' => 'edit_theme_options',
+            'panel' => 'education_zone_home_page_settings'
+        )
+    );
+	
+	/** Enable News Section */
+    $wp_customize->add_setting(
+        'education_zone_ed_news_section',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_checkbox',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'education_zone_ed_news_section',
+        array(
+            'label' => __( 'Enable News Section', 'education-zone' ),
+            'section' => 'education_zone_news_section_settings',
+            'type' => 'checkbox',
+        )
+    );
+	
+	/** News Section Title */
+    $wp_customize->add_setting(
+        'education_zone_news_section_title',
+        array(
+            'default'=> '',
+            'sanitize_callback'=> 'sanitize_text_field'
+            )
+        );
+    
+    $wp_customize-> add_control(
+        'education_zone_news_section_title',
+        array(
+              'label' => __('Select Page','education-zone'),
+              'type' => 'select',
+              'choices' => $options_pages,
+              'section' => 'education_zone_news_section_settings', 
+          
+            ));
+	
+	/** News Section Add Post Category */
+    $wp_customize->add_setting(
+        'education_zone_news_section_category',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_select',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'education_zone_news_section_category',
+        array(
+            'label' => __( 'Show Latest Post from Which Category?', 'education-zone' ),
+            'section' => 'education_zone_news_section_settings',
+            'type' => 'select',
+            'choices' => $option_categories,
+        )
+    );
+  
+  	/** Link to Category page? */
+    $wp_customize->add_setting(
+        'education_zone_ed_news_section_link_one',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_checkbox',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'education_zone_ed_news_section_link_one',
+        array(
+            'label' => __( 'URL Link to Category Page?', 'education-zone' ),
+            'section' => 'education_zone_news_section_settings',
+            'type' => 'checkbox',
+        )
+    );
+  
+  	/** News Section Add Second Post Category */
+    $wp_customize->add_setting(
+        'education_zone_news_section_category_two',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_select',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'education_zone_news_section_category_two',
+        array(
+            'label' => __( 'Show Latest Post from Which Category?', 'education-zone' ),
+            'section' => 'education_zone_news_section_settings',
+            'type' => 'select',
+            'choices' => $option_categories,
+        )
+    );
+  
+    	/** Link to 2nd Category page? */
+    $wp_customize->add_setting(
+        'education_zone_ed_news_section_link_two',
+        array(
+            'default' => '',
+            'sanitize_callback' => 'education_zone_sanitize_checkbox',
+        )
+    );
+    
+    $wp_customize->add_control(
+        'education_zone_ed_news_section_link_two',
+        array(
+            'label' => __( 'URL Link to Category Page?', 'education-zone' ),
+            'section' => 'education_zone_news_section_settings',
+            'type' => 'checkbox',
+        )
+    );
+	
+	/** News Section Ends **/
 
     /** Gallery Section Settings */
     $wp_customize->add_section(

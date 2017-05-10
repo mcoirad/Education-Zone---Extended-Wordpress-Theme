@@ -50,7 +50,7 @@ if( $gallery_post ){
 			
 				?>
 			
-				<a href="http://dmitchell.x10host.com/our-investors/">
+				<a href="/invest/">
 			
 				<?php the_content(); ?> 
 			
